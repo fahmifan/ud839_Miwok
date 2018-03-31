@@ -10,21 +10,31 @@ public class Word {
     /** Image resource eg: R.id.image */
     private int mImageResourceId = NO_IMAGE_PROVIDED ;
 
-    private static final int NO_IMAGE_PROVIDED = -1;
+    /** Audio resource id */
+    private int mAudioResourceId = NO_AUDIO_PROVIDED;
 
-    public Word(String mDefaultTranslation, String mMiwokTranslation, int imageSrc) {
+    private static final int NO_IMAGE_PROVIDED = -1;
+    private static final int NO_AUDIO_PROVIDED = -1;
+
+    public Word(String mDefaultTranslation, String mMiwokTranslation, int audioId) {
         this.mDefaultTranslation = mDefaultTranslation;
         this.mMiwokTranslation = mMiwokTranslation;
-        this.mImageResourceId = imageSrc;
+        this.mAudioResourceId = audioId;
     }
 
-    public Word(String mDefaultTranslation, String mMiwokTranslation) {
+    public Word(String mDefaultTranslation, String mMiwokTranslation, int imageId, int audioId) {
         this.mDefaultTranslation = mDefaultTranslation;
         this.mMiwokTranslation = mMiwokTranslation;
+        this.mImageResourceId = imageId;
+        this.mAudioResourceId = audioId;
     }
 
     public int getmImageResourceId() {
         return mImageResourceId;
+    }
+
+    public int getmAudioResourceId() {
+        return mAudioResourceId;
     }
 
     public String getmDefaultTranslation() {
@@ -35,16 +45,13 @@ public class Word {
         return mMiwokTranslation;
     }
 
-    public void setmDefaultTranslation(String mDefaultTranslation) {
-        this.mDefaultTranslation = mDefaultTranslation;
-    }
-
-    public void setmMiwokTranslation(String mMiwokTranslation) {
-        this.mMiwokTranslation = mMiwokTranslation;
-    }
-
-    /** This will return false if the image is provided */
+    /** This will return true if the image is provided */
     public boolean hasImage() {
         return this.mImageResourceId != NO_IMAGE_PROVIDED;
+    }
+
+    /** This will return true if the audio is provided */
+    public boolean hasAudio() {
+        return this.mAudioResourceId != NO_AUDIO_PROVIDED;
     }
 }
